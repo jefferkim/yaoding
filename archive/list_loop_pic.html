@@ -1,0 +1,66 @@
+
+
+
+
+
+
+
+
+
+
+{template 'header.html'}
+ <div id="bd">
+    	<div class="bd_up">
+        	<div class="bd_up_left">
+            	{template 'left.html'}
+            
+        </div>
+      <div id="bd_right">     
+        <div class="box">
+                <div class="content">
+                	<div class="pd_title"></div>
+                       <div class="pd" style="margin:-20px 0px 10px 0px;">
+{loop categories($catid) $i $t}
+<div class="title1"style="border-left:none;border:right:none;">
+                	<div class="title1_wd">{$t['catname']}</div>
+                    <div class="title1_wde">{$t['htmldir']}</div>
+</div>
+
+<ul id="list-view">
+<li>
+{loop archive($t[catid],0,0,'0,0,0',20,'aid',8,false,0) $i $arc}
+
+{if $i%4==0  &&   $i> 1}
+<div class="clear"></div>
+</li>
+<li>
+{else}{/if}
+<div class="list-view">
+<div class="img-wrap"><a title="{$arc['stitle']}" target="_blank" href="{$arc['url']}"><img alt="{$arc['stitle']}" src="{$arc['sthumb']}" onerror='this.src="{$base_url}/{config::get('onerror_pic')}"' /></a></div>
+<h5><a title="{$arc['stitle']}" target="_blank" href="{$arc['url']}">{$arc['title']}</a></h5>{if $arc['attr2']}<p>{if $arc['attr2']==$arc['oldprice']}{lang(price)}：<span>{$arc['attr2']}</span>{lang(unit)}{else}原价：<span>{$arc['oldprice']}</span>{lang(unit)} 折扣价：<span>{$arc['attr2']}</span>{lang(unit)}{/if}</p>{/if}
+</div>
+
+{/loop}
+<div class="clear"></div>
+</li>
+</ul>
+
+{/loop}
+		<div class="clear"></div>
+		<div class="blank10"></div>
+		{if isset($pages)}
+		{category_pagination($catid)}
+		{/if}
+					   <div class="blank30"></div>
+<a title="{lang(gotop)}" href="#" class="clear floatright"><img alt="{lang(gotop)}" src="{$skin_url}/gotop.gif"></a>
+<div class="blank30"></div>
+					   </div>
+            
+<div class="clear"></div>        
+                </div>
+            </div>
+        
+      </div>
+      <div class="clear"></div>
+    </div>
+{template 'footer.html'}

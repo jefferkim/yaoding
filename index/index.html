@@ -1,0 +1,114 @@
+{template 'header.html'}
+<div id="bd">
+    	<div class="bd_up">
+        	<div class="bd_up_left">
+            	<div class="input1">{lang(search)}：</div>
+              <form name='search' action="<?php echo url('archive/search');?>" onsubmit="search_check();" method="post">
+              <div class="input2"><input name="keyword" type="text" size="14" />
+              </div>
+                <div class="input3"><input name='submit' type="image" src="{$skin_path}/lan_18.gif" /></div></form>
+            </div>
+            <div class="bd_up_right">
+
+			<div id="announ">
+	{loop announ(5) $an}
+	<p><a href="{$an[url]}" title="{$an[title]}">{$an[title]}</a> [{$an[adddate]}]</p>
+	{/loop}
+</div>
+<script type="text/javascript"> 
+//
+var t=setInterval(myfunc,2000); 
+var oBox=document.getElementById("announ"); 
+function myfunc(){ 
+var o=oBox.firstChild 
+oBox.removeChild(o) 
+oBox.appendChild(o) 
+} 
+oBox.onmouseover=function()
+{
+clearInterval(t)
+} 
+oBox.onmouseout=function()
+{
+t=setInterval(myfunc,2000)
+} 
+</script>
+            </div>
+        </div>
+    	<div id="bd_left">
+        	<div class="box">
+            	<div class="title">
+                	{tag_产品中心}
+                </div>
+                <div class="content">
+                	<ul class="ul2">
+                    {loop categories(3) $t1}
+<li><a href="{$t1[url]}" title="{$t1[catname]}">{$t1[catname]}</a></li>
+{/loop}
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="box1">
+            	<div class="title1">
+                	{tag_联系我们}
+                </div>
+                <div class="content">
+                	<div class="p">
+					<ul>
+					<li>{lang(address)}：{get(address)}</li>
+<li>{lang(tel)}：{get(tel)}</li>
+<li>{lang(fax)}：{get(fax)}</li> 
+<li>{lang(email)}：{get(email)}</li> 
+</ul>
+</div>
+                </div>
+            </div>
+            
+        </div>
+      <div id="bd_right">
+      	<div class="bd_right_left">
+        	<div class="box">
+            	<div class="title1">
+                	{tag_关于我们}
+                </div>
+                <div class="content" style="height:198px;">
+							{loop plugins::categoryinfo(1) $c}
+<a href="{$c['url']}"><img  src="{$skin_path}/4.jpg" width="210" height="178" class="company_img"  style="float:left;margin:10px;"/></a>
+<p style="width:240px;float:right;margin:10px;font-size: 14px;line-height:180%;text-align:left;color:#666;"> {cut(strip_tags($c['categorycontent']),120)}...</p>
+{/loop}
+
+<div class=" clear"></div>
+                </div>
+            </div>
+        </div>
+        <div class="bd_right_right">
+        	<div class="box">
+            	<div class="title1">
+                {tag_企业新闻}
+                </div>
+                <div class="content">
+                	<ul class="ul2g">
+							{tag_新闻6条}
+                    </ul>
+                </div>
+            </div>
+        </div>
+<div class="clear"></div>        
+        <div class="box1">
+            	<div class="title1">
+                	{tag_产品中心图片}
+                </div>
+                <div class="content">
+                           
+            {tag_首页图片内容}
+            
+<div class="clear"></div>        
+                </div>
+            </div>
+        
+      </div>
+      <div class="clear"></div>
+    </div>
+    <!--bd部结束-->
+{template 'footer.html'}

@@ -1,0 +1,43 @@
+<div id="footer">
+    	<div class="foot_nav">{tag_网站页底关于我们等说明}
+<a href="#">TOP</a></div>
+        <div class="foot_cprt">
+<!-- 页底说明 -->
+{get(site_right)} <a title="{get('sitename')}" href="{$base_url}/">{get('sitename')}</a> All Rights Reserved.      
+<div class="blank5"></div>
+{getcnzzcount()}&nbsp;&nbsp;Powered by <a href="http://www.cmseasy.cn" title="CmsEasy企业网站系统" target="_blank">CmsEasy</a>&nbsp;&nbsp;<a href="http://www.miibeian.gov.cn/" rel="nofollow" target="_blank">{get('site_icp')}</a>&nbsp;&nbsp; {if get('site_login')=='1'}{login_js()}{/if}&nbsp;&nbsp;
+
+<br />
+
+<div class="copyright">{if $topid==0}<!-- 热门关键词 -->
+<div class="hot_keys">{lang(hotkeys)}： {gethotsearch(10)}</div>{/if}</div>
+
+<!-- 友情链接 -->
+{if $topid==0}<select name="website" onchange="javascript:window.open(this.options[this.selectedIndex].value)" style="float:right; margin-top:10px;">
+<option value="default">{lang('links')}</option>
+{loop friendlink('text',0,20) $flink}
+<option value="{$flink[url]}">{$flink[name]}</option>
+{/loop}
+</select>{/if}
+</div>
+  </div><!--fooder部结束-->
+</div>
+
+<!-- 在线客服 -->
+{template 'system/servers.html'}
+<!-- 短信 -->
+{template 'system/sms.html'}
+
+
+{if get('share')=='1'}
+<!-- Baidu Button BEGIN -->
+<script type="text/javascript" id="bdshare_js" data="type=slide&img=6&pos=right&uid=620555" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+		var bds_config = {"bdTop":150};
+		document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?t=" + new Date().getHours();
+</script>
+<!-- Baidu Button END -->
+{/if}
+</body>
+</html>

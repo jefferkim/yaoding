@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>{getTitle($archive,$category,$catid,$type)} - Powered by CmsEasy</title>
+<meta name="keywords" content="{getKeywords($archive,$category,$catid,$type)}" />
+<meta name="description" content="{getDescription($archive,$category,$catid,$type)}" />
+<meta name="author" content="CmsEasy Team" />
+<link rel="icon" href="{$base_url}/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="{$base_url}/favicon.ico" type="image/x-icon" />
+<link href="{$skin_path}/reset.css" rel="stylesheet" type="text/css" />
+<link href="{$skin_path}/style.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+<div id="main">
+  <div id="header">
+  	<div class="top">
+    	<div class="logo"><a href="{$base_url}/" title="{get(sitename)}"><img src="{get(site_logo)}" width="{get(logo_width)}" alt="{get(sitename)}" /></a></div>
+        <div class="top_right">
+        	<div class="top_links">
+			<a title="RSS" href="{$base_url}/index.php?case=archive&act=rss&catid={$catid}" target="_blank">RSS</a>
+  -  <a href="<?php echo url('archive/orders');?>">{lang(shoppingcart)}</a>
+{if get('mobile_open')=='1'}  -  <a title="{lang(sitewap)}" href="{$base_url}/wap/">{lang(sitewap)}</a>{/if}
+{if get('guestbook_enable')} - <a title="{lang(feedback)}" href="{url('guestbook')}" target="_blank">{lang(feedback)}</a>{/if}
+        	</div>
+            <div class="rexian">{get(tel)}</div>
+        </div>
+    </div>
+  	
+<div class="nav">
+<div class="nav_c">
+<ul id="navmenu"  class="nav_ul"> 
+<li><a title="{lang(backhome)}" href="{$base_url}/" class="one {if $catid==0}on{/if}"><span>{lang(homepage)}</span></a></li>
+{loop categories_nav() $t}
+<li><a href="{$t[url]}" title="{$t[catname]}" class="one{if isset($topid) && $topid==$t[catid]} on{/if}"><span>{$t[catname]}</span></a>
+<ul>
+{loop categories($t[catid]) $t1}
+<li><a title="{$t1[catname]}" href="{$t1[url]}">{$t1[catname]}</a>
+<ul>{loop categories($t1[catid]) $t2}
+<li><a title="{$t2[catname]}" href="{$t2[url]}">{$t2[catname]}</a>
+<ul>{loop categories($t2[catid]) $t3}
+<li><a title="{$t3[catname]}" href="{$t3[url]}">{$t3[catname]}</a>
+<ul>{loop categories($t3[catid]) $t4}
+<li><a title="{$t4[catname]}" href="{$t4[url]}">{$t4[catname]}</a>
+<ul>{loop categories($t4[catid]) $t5}
+<li><a title="{$t5[catname]}" href="{$t5[url]}">{$t5[catname]}</a></li> 
+{/loop}</ul>
+</li> 
+{/loop}</ul>
+</li>
+{/loop}</ul>
+</li>
+{/loop}</ul>
+</li> 
+{/loop}</ul>
+</li>{/loop}
+</ul>
+
+
+    </div>
+    </div>
+
+	<div class="banner">
+{template 'system/slide.html'}
+</div>
+    
+  </div>

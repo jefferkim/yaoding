@@ -1,0 +1,13 @@
+document.write('<form name="form1" method="post" action="{url("ballot")}" class="pa10">');
+document.write('<input type="hidden" name="bid" id="bid" value="{$arr['id']}" />');
+document.write('<p class="f14 pt10 pb10">');
+document.write('{$arr['title']}</p>');
+        {loop $row $option}
+            {if $arr['type'] == 'radio'}
+                document.write('<p class="c_666"><input type="radio" name="ballot" id="ballot" value="{$option['id']}" />"');
+            {else}
+                document.write('<p class="c_666"><input type="checkbox" name="ballot[]" id="ballot" value="{$option['id']}" />');
+            {/if}
+            document.write(' {$option['name']} ({$option['num']})</p>');
+        {/loop}
+document.write('<input type="submit" name="submit" id="button" class="btn_1" value="{$lang['vote']}" /></form>');

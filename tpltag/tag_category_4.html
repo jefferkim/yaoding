@@ -1,0 +1,12 @@
+{loop plugins::categoryinfo($_catid) $cat}
+
+<div class="title1_wd">
+<a href="{$cat[url]}" title="{$t['name']}">{$cat[catname]}</a>
+</div>
+                    <div class="title1_wde">{$cat[htmldir]}</div>
+                    <div class="more">
+<a href="{$cat[url]}" title="{$t['name']}"><img src="{$skin_path}/lan_3.gif" /></a>
+</div>
+
+
+{/loop}
